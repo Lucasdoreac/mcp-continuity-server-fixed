@@ -1,0 +1,45 @@
+{
+  "name": "@lucasdoreac/mcp-continuity-server",
+  "version": "1.0.6",
+  "description": "Um servidor MCP para gerenciamento de continuidade e estado em projetos",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "mcp-continuity-server": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "prepare": "node -e \"if(process.platform !== 'win32') require('child_process').execSync('chmod +x ./src/index.js')\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucasdoreac/mcp-continuity-server-fixed.git"
+  },
+  "keywords": [
+    "mcp",
+    "continuity",
+    "context",
+    "ai",
+    "development",
+    "server"
+  ],
+  "author": "Lucas Dórea Cardoso",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lucasdoreac/mcp-continuity-server-fixed/issues"
+  },
+  "homepage": "https://github.com/Lucasdoreac/mcp-continuity-server-fixed#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs-extra": "^11.2.0",
+    "octokit": "^3.1.2",
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
