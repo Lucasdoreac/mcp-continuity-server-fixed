@@ -1,14 +1,15 @@
-# MCP Continuity Server (Versão Corrigida)
+# MCP Continuity Server (Versão Simplificada)
 
-Um servidor MCP para gerenciamento de continuidade e estado em projetos, baseado no MCP Continuity Tool. Esta versão foi corrigida para ser compatível com o SDK MCP versão 1.7.0.
+Um servidor MCP para gerenciamento de continuidade e estado em projetos, baseado no MCP Continuity Tool. Esta versão foi simplificada para ser compatível com o SDK MCP versão 1.7.0.
 
-## Correções
+## Correções na Versão 1.0.7
 
-Esta versão corrige os seguintes problemas da versão original:
+Esta versão faz as seguintes alterações:
 
-1. Incompatibilidade com SDK MCP 1.7.0 (original usava 1.0.1)
-2. Suporte aos métodos `resources/list` e `prompts/list` com a sintaxe correta
-3. Versão atualizada e testada com Claude Desktop
+1. Atualização do SDK MCP para 1.7.0 (original usava 1.0.1)
+2. **Remoção completa** dos handlers `resources/list` e `prompts/list` que causavam erro
+3. Versão simplificada focada apenas nas funcionalidades essenciais
+4. Compatibilidade garantida com Claude Desktop
 
 ## Pré-requisitos
 
@@ -85,6 +86,10 @@ O servidor cria e gerencia um arquivo `project-status.json` que armazena o estad
 * Estado atual do desenvolvimento (arquivo atual, componente, tarefas)
 * Lista de componentes (concluídos, em progresso, pendentes)
 * Contexto de desenvolvimento (último pensamento, próximos passos)
+
+## Notas da Versão 1.0.7
+
+Esta versão simplifica o servidor, removendo funcionalidades que não são essenciais e que estavam causando problemas com a versão 1.7.0 do SDK MCP. As funções principais de gerenciamento de estado continuam funcionando normalmente.
 
 ## Licença
 
