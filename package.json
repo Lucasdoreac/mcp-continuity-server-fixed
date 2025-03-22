@@ -1,6 +1,6 @@
 {
   "name": "@lucasdoreac/mcp-continuity-server",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Um servidor MCP para gerenciamento de continuidade e estado em projetos",
   "main": "src/index.js",
   "type": "module",
