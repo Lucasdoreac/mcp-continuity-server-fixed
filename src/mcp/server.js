@@ -5,26 +5,13 @@ import { StateManager } from '../services/stateManager.js';
 import { AutoSetup } from '../services/autoSetup.js';
 import { RepositoryTools } from '../services/repositoryTools.js';
 
-// Definir schemas adicionais compatíveis com SDK 1.7.0
-const ResourcesListRequestSchema = {
-  type: 'object',
-  method: 'resources/list',
-  params: {}
-};
-
-const PromptsListRequestSchema = {
-  type: 'object',
-  method: 'prompts/list',
-  params: {}
-};
-
 export class MCPServer {
   constructor() {
     // Inicializa o servidor MCP
     this.server = new Server(
       {
         name: 'MCP Continuity Server',
-        version: '1.0.6',
+        version: '1.0.7',
       },
       {
         capabilities: {
@@ -59,7 +46,7 @@ export class MCPServer {
                 },
                 workingDirectory: {
                   type: 'string',
-                  description: 'Diretório de trabalho opcional (ex: \\'src\\', \\'frontend/src\\')'
+                  description: 'Diretório de trabalho opcional (ex: \'src\', \'frontend/src\')'
                 }
               },
               required: ['repositoryUrl']
@@ -104,7 +91,7 @@ export class MCPServer {
               properties: {
                 workingDirectory: {
                   type: 'string',
-                  description: 'Diretório de trabalho opcional (ex: \\'src\\', \\'frontend/src\\')'
+                  description: 'Diretório de trabalho opcional (ex: \'src\', \'frontend/src\')'
                 }
               }
             }
@@ -158,33 +145,8 @@ export class MCPServer {
       }
     });
     
-    // Adicionar handler para resources/list (usando schema compatível com SDK 1.7.0)
-    this.server.setRequestHandler(ResourcesListRequestSchema, async () => {
-      return {
-        resources: [
-          {
-            id: "project-state-template",
-            name: "Template de Estado de Projeto",
-            description: "Template JSON para inicialização de estado de projeto",
-            contentType: "application/json"
-          }
-        ]
-      };
-    });
-
-    // Adicionar handler para prompts/list (usando schema compatível com SDK 1.7.0)
-    this.server.setRequestHandler(PromptsListRequestSchema, async () => {
-      return {
-        prompts: [
-          {
-            id: "continuity-prompt",
-            name: "Prompt de Continuidade",
-            description: "Prompt para usar nas próximas sessões para manter continuidade",
-            template: "Use MCP Continuity Server para gerenciar o projeto {repositoryUrl}. Status: {projectStatus}"
-          }
-        ]
-      };
-    });
+    // Handlers para resources/list e prompts/list foram removidos intencionalmente
+    // para evitar problemas de incompatibilidade com o SDK 1.7.0
   }
 
   async handleInitProjectState(args) {
