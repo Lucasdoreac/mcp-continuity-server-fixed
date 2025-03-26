@@ -16,7 +16,7 @@ export class AutoSetup {
    * @returns {Promise<Object>} - Estado do projeto configurado
    */
   async setupProjectState(repositoryUrl, workingDirectory = '') {
-    console.log(`🚀 Configurando ambiente para o repositório: ${repositoryUrl}${workingDirectory ? ` (diretório: ${workingDirectory})` : ''}`);
+    console.log(`[INICIANDO] Configurando ambiente para o repositório: ${repositoryUrl}${workingDirectory ? ` (diretório: ${workingDirectory})` : ''}`);
     
     // Extrai informações do repositório a partir da URL
     const repoPath = repositoryUrl.split('/').slice(-2).join('/').replace('.git', '');
@@ -31,16 +31,16 @@ export class AutoSetup {
     if (workingDirectory) {
       try {
         await fs.ensureDir(workingDirectory);
-        console.log(`✅ Diretório ${workingDirectory} está disponível`);
+        console.log(`[OK] Diretório ${workingDirectory} está disponível`);
       } catch (error) {
-        console.log(`⚠️ Diretório ${workingDirectory} não encontrado. Tentando criar...`);
+        console.log(`[AVISO] Diretório ${workingDirectory} não encontrado. Tentando criar...`);
         try {
           // Tenta criar o diretório de trabalho
           await fs.ensureDir(workingDirectory);
-          console.log(`✅ Diretório ${workingDirectory} criado`);
+          console.log(`[OK] Diretório ${workingDirectory} criado`);
         } catch (dirError) {
-          console.error(`❌ Erro ao criar diretório de trabalho: ${dirError}`);
-          console.log('⚠️ Usando diretório raiz como alternativa.');
+          console.error(`[ERRO] Erro ao criar diretório de trabalho: ${dirError}`);
+          console.log('[AVISO] Usando diretório raiz como alternativa.');
           workingDirectory = '';
         }
       }
@@ -51,9 +51,9 @@ export class AutoSetup {
     try {
       // Tenta carregar o estado existente
       projectState = await this.stateManager.loadProjectState(projectStatusPath);
-      console.log('✅ project-status.json encontrado para ' + repoName);
+      console.log('[OK] project-status.json encontrado para ' + repoName);
     } catch (error) {
-      console.log('⚠️ project-status.json não encontrado. Criando um novo com dados do repositório...');
+      console.log('[AVISO] project-status.json não encontrado. Criando um novo com dados do repositório...');
       
       // Coleta informações do repositório para preencher dinamicamente o template
       let mainFiles = [];
@@ -123,7 +123,7 @@ export class AutoSetup {
       await this.stateManager.saveProjectState(template, projectStatusPath);
       
       projectState = template;
-      console.log('✅ Novo project-status.json criado com dados do repositório ' + repoName);
+      console.log('[OK] Novo project-status.json criado com dados do repositório ' + repoName);
     }
     
     return projectState;
@@ -137,7 +137,7 @@ export class AutoSetup {
    */
   async initializeEnvironment(repositoryUrl, workingDirectory = '') {
     try {
-      console.log('🔄 Inicializando ambiente MCP...');
+      console.log('[PROCESSANDO] Inicializando ambiente MCP...');
       
       // Configura o estado do projeto
       const projectState = await this.setupProjectState(repositoryUrl, workingDirectory);
@@ -149,7 +149,7 @@ export class AutoSetup {
       const continuityPrompt = this.stateManager.generateContinuityPrompt(projectState);
       
       // Exibe informações de resumo
-      console.log('\n📊 Resumo do Ambiente:');
+      console.log('\n[RESUMO] Resumo do Ambiente:');
       console.log(`- Projeto: ${projectState.projectInfo.name}`);
       console.log(`- Repositório: ${projectState.projectInfo.repository}`);
       if (workingDirectory) {
@@ -159,7 +159,7 @@ export class AutoSetup {
       console.log(`- Tarefa em progresso: ${projectState.development.inProgress.description}`);
       console.log(`- Total de arquivos: ${repoAnalysis.fileCount}`);
       
-      console.log('\n🔄 Prompt de continuidade para próximas sessões:');
+      console.log('\n[PROCESSANDO] Prompt de continuidade para próximas sessões:');
       console.log(continuityPrompt);
       
       return {
@@ -168,7 +168,7 @@ export class AutoSetup {
         continuityPrompt
       };
     } catch (error) {
-      console.error('❌ Erro ao inicializar ambiente:', error);
+      console.error('[ERRO] Erro ao inicializar ambiente:', error);
       throw error;
     }
   }
