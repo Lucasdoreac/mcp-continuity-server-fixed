@@ -11,7 +11,7 @@ export class MCPServer {
     this.server = new Server(
       {
         name: 'MCP Continuity Server',
-        version: '1.0.9',
+        version: '1.1.0',
       },
       {
         capabilities: {
@@ -157,7 +157,7 @@ export class MCPServer {
         content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
       };
     } catch (error) {
-      console.error('Erro em initProjectState:', error);
+      console.error('[ERRO] initProjectState:', error);
       return {
         content: [{ type: 'text', text: `Erro ao inicializar estado do projeto: ${error.message}` }],
         isError: true
@@ -173,7 +173,7 @@ export class MCPServer {
         content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
       };
     } catch (error) {
-      console.error('Erro em loadProjectState:', error);
+      console.error('[ERRO] loadProjectState:', error);
       return {
         content: [{ type: 'text', text: `Erro ao carregar estado do projeto: ${error.message}` }],
         isError: true
@@ -189,7 +189,7 @@ export class MCPServer {
         content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
       };
     } catch (error) {
-      console.error('Erro em updateProjectState:', error);
+      console.error('[ERRO] updateProjectState:', error);
       return {
         content: [{ type: 'text', text: `Erro ao atualizar estado do projeto: ${error.message}` }],
         isError: true
@@ -205,7 +205,7 @@ export class MCPServer {
         content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
       };
     } catch (error) {
-      console.error('Erro em analyzeRepository:', error);
+      console.error('[ERRO] analyzeRepository:', error);
       return {
         content: [{ type: 'text', text: `Erro ao analisar repositório: ${error.message}` }],
         isError: true
@@ -222,7 +222,7 @@ export class MCPServer {
         content: [{ type: 'text', text: prompt }]
       };
     } catch (error) {
-      console.error('Erro em generateContinuityPrompt:', error);
+      console.error('[ERRO] generateContinuityPrompt:', error);
       return {
         content: [{ type: 'text', text: `Erro ao gerar prompt de continuidade: ${error.message}` }],
         isError: true
