@@ -1,0 +1,71 @@
+{
+  "projectInfo": {
+    "name": "mcp-continuity-server-fixed",
+    "repository": "https://github.com/Lucasdoreac/mcp-continuity-server-fixed",
+    "workingDirectory": null,
+    "lastUpdated": "2025-03-25T00:30:00.000Z",
+    "version": "1.0.8"
+  },
+  "development": {
+    "currentFile": "src/services/autoSetup.js",
+    "currentComponent": "Mensagens de Log",
+    "inProgress": {
+      "type": "fix",
+      "description": "Substituição de emojis por textos equivalentes para compatibilidade com Claude Desktop",
+      "remainingTasks": [
+        "Verificar compatibilidade de logs no Claude Desktop",
+        "Atualizar versão do pacote para refletir as mudanças"
+      ]
+    }
+  },
+  "components": {
+    "completed": [
+      {
+        "name": "Servidor MCP (modo MCP)",
+        "priority": "high"
+      },
+      {
+        "name": "Servidor Web Express",
+        "priority": "medium"
+      }
+    ],
+    "inProgress": [
+      {
+        "name": "Sistema de Logs",
+        "priority": "high"
+      }
+    ],
+    "pending": [
+      {
+        "name": "Interface de Usuário Web",
+        "priority": "low"
+      },
+      {
+        "name": "Testes",
+        "priority": "medium"
+      }
+    ]
+  },
+  "context": {
+    "lastThought": "Os emojis em logs de console podem causar problemas de compatibilidade com as notificações de erro do Claude Desktop durante chamadas a ferramentas MCP.",
+    "nextSteps": [
+      "Atualizar os logs para usar formatação textual em vez de emojis",
+      "Testar a integração com o Claude Desktop",
+      "Considerar outras formas de melhorar a compatibilidade"
+    ],
+    "dependencies": [
+      "@modelcontextprotocol/sdk": "^1.7.0",
+      "express": "^4.18.2",
+      "fs-extra": "^11.2.0"
+    ]
+  },
+  "mcpTools": {
+    "lastUsed": {
+      "repl": null,
+      "artifacts": [],
+      "searchResults": []
+    },
+    "cacheFiles": [],
+    "tempStorage": []
+  }
+}
