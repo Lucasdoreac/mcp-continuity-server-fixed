@@ -11,7 +11,7 @@ export class MCPServer {
     this.server = new Server(
       {
         name: 'MCP Continuity Server',
-        version: '1.0.8',
+        version: '1.0.9',
       },
       {
         capabilities: {
@@ -232,18 +232,18 @@ export class MCPServer {
 
   async start() {
     // Usando console.error para evitar interferir com o transporte MCP
-    console.error('Iniciando servidor MCP...');
+    console.error('[INICIANDO] Servidor MCP...');
     
     // Cria e conecta o transporte padrão (stdio)
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
     
-    console.error('Servidor MCP iniciado com sucesso!');
+    console.error('[OK] Servidor MCP iniciado com sucesso!');
   }
 
   async stop() {
-    console.error('Parando servidor MCP...');
+    console.error('[PROCESSANDO] Parando servidor MCP...');
     await this.server.disconnect();
-    console.error('Servidor MCP parado com sucesso!');
+    console.error('[OK] Servidor MCP parado com sucesso!');
   }
 }
