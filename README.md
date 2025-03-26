@@ -2,7 +2,7 @@
 
 Um servidor MCP para gerenciamento de continuidade e estado em projetos, baseado no MCP Continuity Tool. Esta versão foi simplificada para ser compatível com o SDK MCP versão 1.7.0.
 
-## Correções na Versão 1.0.7
+## Correções na Versão 1.0.9
 
 Esta versão faz as seguintes alterações:
 
@@ -10,6 +10,8 @@ Esta versão faz as seguintes alterações:
 2. **Remoção completa** dos handlers `resources/list` e `prompts/list` que causavam erro
 3. Versão simplificada focada apenas nas funcionalidades essenciais
 4. Compatibilidade garantida com Claude Desktop
+5. Substituição de emojis por texto para melhor compatibilidade
+6. Formatação padronizada de mensagens de log
 
 ## Pré-requisitos
 
@@ -87,9 +89,21 @@ O servidor cria e gerencia um arquivo `project-status.json` que armazena o estad
 * Lista de componentes (concluídos, em progresso, pendentes)
 * Contexto de desenvolvimento (último pensamento, próximos passos)
 
-## Notas da Versão 1.0.7
+## Histórico de Versões
 
-Esta versão simplifica o servidor, removendo funcionalidades que não são essenciais e que estavam causando problemas com a versão 1.7.0 do SDK MCP. As funções principais de gerenciamento de estado continuam funcionando normalmente.
+### Versão 1.0.9
+- Substituição de todos os emojis por equivalentes textuais para garantir compatibilidade com Claude Desktop
+- Padronização das mensagens de log com prefixos textuais [INICIANDO], [OK], [AVISO], [ERRO]
+- Melhorias na documentação e comentários JSDoc
+
+### Versão 1.0.8
+- Atualização das dependências de segurança
+- Correções de bugs menores
+
+### Versão 1.0.7
+- Simplificação do servidor, removendo funcionalidades que não são essenciais 
+- Compatibilidade com a versão 1.7.0 do SDK MCP
+- Remoção de handlers que causavam conflitos
 
 ## Licença
 
