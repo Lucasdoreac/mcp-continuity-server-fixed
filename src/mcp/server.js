@@ -11,7 +11,7 @@ export class MCPServer {
     this.server = new Server(
       {
         name: 'MCP Continuity Server',
-        version: '1.0.7',
+        version: '1.0.8',
       },
       {
         capabilities: {
