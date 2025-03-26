@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Continuity Server - Painel de Controle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .status-badge {
+            font-size: 0.8rem;
+        }
+        .completed {
+            background-color: #d4edda;
+        }
+        .in-progress {
+            background-color: #fff3cd;
+        }
+        .pending {
+            background-color: #f8d7da;
+        }
+        .header-info {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">MCP Continuity Server</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Painel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Configurações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Ajuda</a>
+                    </li>
+                </ul>
+            </div>
+            <span class="navbar-text">
+                <span class="badge bg-success">v1.0.9</span>
+            </span>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Status do Projeto</h5>
+                        <button class="btn btn-sm btn-primary" id="refreshButton">Atualizar</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="header-info mb-3">
+                            Última atualização: <span id="lastUpdated">Carregando...</span>
+                        </div>
+                        <h6>Informações do Projeto</h6>
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <td>Nome</td>
+                                    <td id="projectName">Carregando...</td>
+                                </tr>
+                                <tr>
+                                    <td>Repositório</td>
+                                    <td id="projectRepo">Carregando...</td>
+                                </tr>
+                                <tr>
+                                    <td>Versão</td>
+                                    <td id="projectVersion">Carregando...</td>
+                                </tr>
+                                <tr>
+                                    <td>Diretório de Trabalho</td>
+                                    <td id="workingDir">Carregando...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Componentes</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="componentsTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="completed-tab" data-bs-toggle="tab" data-bs-target="#completed" type="button" role="tab">Concluídos</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="in-progress-tab" data-bs-toggle="tab" data-bs-target="#in-progress" type="button" role="tab">Em Progresso</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab">Pendentes</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-3" id="componentsTabContent">
+                            <div class="tab-pane fade show active" id="completed" role="tabpanel">
+                                <div id="completedList">Carregando...</div>
+                            </div>
+                            <div class="tab-pane fade" id="in-progress" role="tabpanel">
+                                <div id="inProgressList">Carregando...</div>
+                            </div>
+                            <div class="tab-pane fade" id="pending" role="tabpanel">
+                                <div id="pendingList">Carregando...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Desenvolvimento Atual</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Componente: <span id="currentComponent">Carregando...</span></h6>
+                        <p class="text-muted" id="currentDescription">Carregando...</p>
+                        <h6>Tarefas Pendentes:</h6>
+                        <ul id="taskList" class="list-group list-group-flush">
+                            <li class="list-group-item">Carregando...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Contexto</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Últimas Reflexões</h6>
+                        <p id="lastThought">Carregando...</p>
+                        <h6>Próximos Passos</h6>
+                        <ul id="nextStepsList" class="list-group list-group-flush">
+                            <li class="list-group-item">Carregando...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modais -->
+    <div class="modal fade" id="settingsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Configurações</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="settingsForm">
+                        <div class="mb-3">
+                            <label for="apiEndpoint" class="form-label">Endpoint da API</label>
+                            <input type="text" class="form-control" id="apiEndpoint" value="http://localhost:3000/api">
+                        </div>
+                        <div class="mb-3">
+                            <label for="refreshInterval" class="form-label">Intervalo de Atualização (segundos)</label>
+                            <input type="number" class="form-control" id="refreshInterval" value="30" min="5">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveSettings">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="helpModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajuda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Sobre o MCP Continuity Server</h6>
+                    <p>Esta interface permite monitorar e gerenciar o estado do seu projeto através do MCP Continuity Server.</p>
+                    <p>Versão 1.0.9</p>
+                    <h6>Links Úteis</h6>
+                    <ul>
+                        <li><a href="https://github.com/Lucasdoreac/mcp-continuity-server-fixed" target="_blank">Repositório GitHub</a></li>
+                        <li><a href="https://github.com/Lucasdoreac/mcp-continuity-server-fixed/issues" target="_blank">Reportar Problemas</a></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Será substituído pela versão real em assets/main.js
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mock de dados para teste
+            const projectData = {
+                projectInfo: {
+                    name: "mcp-continuity-server-fixed",
+                    repository: "https://github.com/Lucasdoreac/mcp-continuity-server-fixed",
+                    workingDirectory: null,
+                    lastUpdated: "2025-03-26T02:30:00.000Z",
+                    version: "1.0.9"
+                },
+                development: {
+                    currentComponent: "Interface de Usuário Web",
+                    inProgress: {
+                        description: "Implementação da interface de usuário web",
+                        remainingTasks: [
+                            "Criar estrutura básica HTML/CSS",
+                            "Implementar componentes React para interação com API",
+                            "Adicionar funcionalidade de visualização de estado do projeto",
+                            "Implementar formulários para manipulação de status"
+                        ]
+                    }
+                },
+                components: {
+                    completed: [
+                        { name: "Servidor MCP (modo MCP)", priority: "high" },
+                        { name: "Servidor Web Express", priority: "medium" },
+                        { name: "Sistema de Logs", priority: "high" },
+                        { name: "Mensagens de Log", priority: "high" },
+                        { name: "Testes", priority: "medium" }
+                    ],
+                    inProgress: [
+                        { name: "Interface de Usuário Web", priority: "low" }
+                    ],
+                    pending: []
+                },
+                context: {
+                    lastThought: "Finalizamos a implementação de testes automatizados com Jest para todos os componentes principais do sistema: StateManager, MCPServer, RepositoryTools e AutoSetup. Também configuramos um pipeline de CI/CD com GitHub Actions que executa os testes em ambientes Node.js 18.x e 20.x, verifica a formatação do código com Prettier, e cria um pacote NPM para distribuição. O próximo passo é implementar uma interface web simples para visualização e manipulação do estado do projeto.",
+                    nextSteps: [
+                        "Iniciar o desenvolvimento da interface web",
+                        "Implementar endpoints REST adicionais para integração web-API",
+                        "Adicionar autenticação simples para a interface web",
+                        "Preparar para publicação no npm como versão 1.1.0"
+                    ]
+                }
+            };
+
+            // Atualizar a interface com os dados
+            updateUI(projectData);
+
+            // Event listeners
+            document.getElementById('refreshButton').addEventListener('click', fetchData);
+            document.getElementById('saveSettings').addEventListener('click', saveSettings);
+        });
+
+        function updateUI(data) {
+            // Info do projeto
+            document.getElementById('projectName').textContent = data.projectInfo.name;
+            document.getElementById('projectRepo').innerHTML = `<a href="${data.projectInfo.repository}" target="_blank">${data.projectInfo.repository}</a>`;
+            document.getElementById('projectVersion').textContent = data.projectInfo.version;
+            document.getElementById('workingDir').textContent = data.projectInfo.workingDirectory || 'Raiz do projeto';
+            document.getElementById('lastUpdated').textContent = new Date(data.projectInfo.lastUpdated).toLocaleString();
+
+            // Componente atual
+            document.getElementById('currentComponent').textContent = data.development.currentComponent;
+            document.getElementById('currentDescription').textContent = data.development.inProgress.description;
+            
+            // Lista de tarefas
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = '';
+            data.development.inProgress.remainingTasks.forEach(task => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.textContent = task;
+                taskList.appendChild(li);
+            });
+
+            // Componentes completados
+            const completedList = document.getElementById('completedList');
+            completedList.innerHTML = '';
+            if (data.components.completed.length === 0) {
+                completedList.textContent = 'Nenhum componente concluído.';
+            } else {
+                const ul = document.createElement('ul');
+                ul.className = 'list-group';
+                data.components.completed.forEach(component => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                    li.textContent = component.name;
+                    const badge = document.createElement('span');
+                    badge.className = `badge status-badge ${getPriorityClass(component.priority)}`;
+                    badge.textContent = getPriorityText(component.priority);
+                    li.appendChild(badge);
+                    ul.appendChild(li);
+                });
+                completedList.appendChild(ul);
+            }
+
+            // Componentes em progresso
+            const inProgressList = document.getElementById('inProgressList');
+            inProgressList.innerHTML = '';
+            if (data.components.inProgress.length === 0) {
+                inProgressList.textContent = 'Nenhum componente em progresso.';
+            } else {
+                const ul = document.createElement('ul');
+                ul.className = 'list-group';
+                data.components.inProgress.forEach(component => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                    li.textContent = component.name;
+                    const badge = document.createElement('span');
+                    badge.className = `badge status-badge ${getPriorityClass(component.priority)}`;
+                    badge.textContent = getPriorityText(component.priority);
+                    li.appendChild(badge);
+                    ul.appendChild(li);
+                });
+                inProgressList.appendChild(ul);
+            }
+
+            // Componentes pendentes
+            const pendingList = document.getElementById('pendingList');
+            pendingList.innerHTML = '';
+            if (data.components.pending.length === 0) {
+                pendingList.textContent = 'Nenhum componente pendente.';
+            } else {
+                const ul = document.createElement('ul');
+                ul.className = 'list-group';
+                data.components.pending.forEach(component => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                    li.textContent = component.name;
+                    const badge = document.createElement('span');
+                    badge.className = `badge status-badge ${getPriorityClass(component.priority)}`;
+                    badge.textContent = getPriorityText(component.priority);
+                    li.appendChild(badge);
+                    ul.appendChild(li);
+                });
+                pendingList.appendChild(ul);
+            }
+
+            // Contexto
+            document.getElementById('lastThought').textContent = data.context.lastThought;
+            
+            // Próximos passos
+            const nextStepsList = document.getElementById('nextStepsList');
+            nextStepsList.innerHTML = '';
+            data.context.nextSteps.forEach(step => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.textContent = step;
+                nextStepsList.appendChild(li);
+            });
+        }
+
+        function getPriorityClass(priority) {
+            switch(priority) {
+                case 'high': return 'bg-danger';
+                case 'medium': return 'bg-warning';
+                case 'low': return 'bg-info';
+                default: return 'bg-secondary';
+            }
+        }
+
+        function getPriorityText(priority) {
+            switch(priority) {
+                case 'high': return 'Alta';
+                case 'medium': return 'Média';
+                case 'low': return 'Baixa';
+                default: return 'Desconhecida';
+            }
+        }
+
+        function fetchData() {
+            // Na versão mockada, apenas atualiza a hora
+            const lastUpdated = document.getElementById('lastUpdated');
+            lastUpdated.textContent = new Date().toLocaleString();
+            
+            // Na versão real, isso faria uma chamada à API para obter os dados atualizados
+            console.log('Atualizando dados...');
+        }
+
+        function saveSettings() {
+            const apiEndpoint = document.getElementById('apiEndpoint').value;
+            const refreshInterval = document.getElementById('refreshInterval').value;
+            
+            // Salvar em localStorage
+            localStorage.setItem('mcp_api_endpoint', apiEndpoint);
+            localStorage.setItem('mcp_refresh_interval', refreshInterval);
+            
+            console.log('Configurações salvas:', { apiEndpoint, refreshInterval });
+            
+            // Fechar modal
+            const settingsModal = bootstrap.Modal.getInstance(document.getElementById('settingsModal'));
+            settingsModal.hide();
+        }
+    </script>
+</body>
+</html>
