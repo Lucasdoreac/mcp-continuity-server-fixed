@@ -16,7 +16,9 @@
     "prepare": "node -e \"if(process.platform !== 'win32') require('child_process').execSync('chmod +x ./src/index.js')\"",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
-    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "verify-node": "node tools/verify-node-compatibility.js",
+    "prepublishOnly": "npm run verify-node && npm test"
   },
   "repository": {
     "type": "git",
