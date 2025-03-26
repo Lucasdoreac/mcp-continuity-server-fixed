@@ -1,11 +1,106 @@
-IyEvdXNyL2Jpbi9lbnYgbm9kZQoKaW1wb3J0IGV4cHJlc3MgZnJvbSAnZXhwcmVzcyc7CmltcG9ydCBjb3JzIGZyb20gJ2NvcnMnOwppbXBvcnQgZG90ZW52IGZyb20gJ2RvdGVudic7CmltcG9ydCBmcyBmcm9tICdmcy1leHRyYSc7CmltcG9ydCBwYXRoIGZyb20gJ3BhdGgnOwppbXBvcnQgeyBmaWxlVVJMVG9QYXRoIH0gZnJvbSAndXJsJzsKaW1wb3J0IHsgTUNQU2VydmVyIH0gZnJvbSAnLi9tY3Avc2VydmVyLmpzJzsKaW1wb3J0IHsgV2ViQ29udHJvbGxlciB9IGZyb20gJy4vd2ViL2NvbnRyb2xsZXIuanMnOwppbXBvcnQgeyBTdGF0ZU1hbmFnZXIgfSBmcm9tICcuL3NlcnZpY2VzL3N0YXRlTWFuYWdlci5qcyc7Cgov'
-+ 'LyBDb25maWd1cmHDp8OjbyBkbyBhbWJpZW50ZQpkb3RlbnYuY29uZmlnKCk7CgovLyBEZXRlY3RhciBzZSBlc3RhbW9zIHJvZGFuZG8gdmlhIE1DUCAoc2VtIGFyZ3VtZW50b3MpIG91IGNvbW8gc2Vydmlkb3Igd2ViCmNvbnN0IGlzTUNQTW9kZSA9IHByb2Nlc3MuYXJndi5sZW5ndGggPD0gMjsKCmlmIChpc01DUE1vZGUpIHsKICAvLyBNb2RvIE1DUCAtIHVzYXIgU3RkaW9TZXJ2ZXJUcmFuc3BvcnQKICBjb25zb2xlLmVycm9yKCJJbml'
-+ 'jaWFuZG8gZW0gbW9kbyBNQ1AuLi4iKTsgLy8gVXNlIGNvbnNvbGUuZXJyb3IgcGFyYSBsb2dzIAogIAogIC8vIEluaWNpYWxpemEgbyBzZXJ2aWRvciBNQ1AKICBjb25zdCBtY3BTZXJ2ZXIgPSBuZXcgTUNQU2VydmVyKCk7CiAgCiAgLy8gSW5pY2lhIG8gc2Vydmlkb3IgTUNQCiAgbWNwU2VydmVyLnN0YXJ0KCkuY2F0Y2goZXJyID0+IHsKICAgIGNvbnNvbGUuZXJyb3IoIltFUlJPXSBGYWxoYSBhbyBpbmljaWFyIHNlcnZpZG9yIE1'
-+ 'DUDoiLCBlcnIpOwogICAgcHJvY2Vzcy5leGl0KDEpOwogIH0pOwogIAogIC8vIFRyYXRhbWVudG8gZGUgZW5jZXJyYW1lbnRvCiAgcHJvY2Vzcy5vbignU0lHSU5UJywgYXN5bmMgKCkgPT4gewogICAgY29uc29sZS5lcnJvcignRW5jZXJyYW5kbyBzZXJ2aWRvciBNQ1AuLi4nKTsKICAgIGF3YWl0IG1jcFNlcnZlci5zdG9wKCk7CiAgICBwcm9jZXNzLmV4aXQoMCk7CiAgfSk7Cn0gZWxzZSB7CiAgLy8gTW9kbyBzZXJ'
-+ '2aWRvciB3ZWIgLSBpbmljaWFsaXphciBFeHByZXNzIGUgTUNQCiAgLy8gQ29uZmlndXJhw6fDo28gZG8gZGlyZXTDs3JpbyBhdHVhbCAocGFyYSBFUyBtb2R1bGVzKQogIGNvbnN0IF9fZmlsZW5hbWUgPSBmaWxlVVJMVG9QYXRoKGltcG9ydC5tZXRhLnVybCk7CiAgY29uc3QgX19kaXJuYW1lID0gcGF0aC5kaXJuYW1lKF9fZmlsZW5hbWUpOwoKICBjb25zdCBhcHAgPSBleHByZXNzKCk7CiAgY29uc3QgUE9SVCA9IHByb2N'
-+ 'lc3MuZW52LlBPUlQgfHwgMzAwMDsKCiAgLy8gTWlkZGxld2FyZQogIGFwcC51c2UoZXhwcmVzcy5qc29uKCkpOwogIGFwcC51c2UoY29ycygpKTsKICBhcHAudXNlKGV4cHJlc3Muc3RhdGljKHBhdGguam9pbihfX2Rpcm5hbWUsICd3ZWIvYXNzZXRzJykpKTsKCiAgLy8gSW5pY2lhbGl6YSBvcyBzZXJ2acOnb3MKICBjb25zdCBzdGF0ZU1hbmFnZXIgPSBuZXcgU3RhdGVNYW5hZ2VyKCk7CiAgCiAgLy8gSW5pY2lhbGl6'
-+ 'YSBvIHNlcnZpZG9yIE1DUAogIGNvbnN0IG1jcFNlcnZlciA9IG5ldyBNQ1BTZXJ2ZXIoKTsKICAKICAvLyBJbmljaWFsaXphIG8gY29udHJvbGFkb3Igd2ViCiAgY29uc3Qgd2ViQ29udHJvbGxlciA9IG5ldyBXZWJDb250cm9sbGVyKHsgc3RhdGVNYW5hZ2VyIH0pOwogIAogIC8vIFJlZ2lzdHJhIGFzIHJvdGFzIGRhIGludGVyZmFjZSB3ZWIKICBhcHAudXNlKCcvJywgd2ViQ29udHJvbGxlci5nZXRSb3V0ZXI'
-+ 'oKSk7CgogIC8vIFDDoWdpbmEgaW5pY2lhbCBjb20gZG9jdW1lbnRhw6fDo28gKGJhY2t1cCBjYXNvIGEgcm90YSBkbyBXZWJDb250cm9sbGVyIGZhbGhlKQogIGFwcC5nZXQoJyonLCAocmVxLCByZXMpID0+IHsKICAgIHJlcy5yZWRpcmVjdCgnLycpOwogIH0pOwoKICAvLyBJbmljaWEgbyBzZXJ2aWRvciBFeHByZXNzCiAgYXBwLmxpc3RlbihQT1JULCAoKSA9PiB7CiAgICBjb25zb2xlLmxvZyhgW0lORk9dIE1DU'
-+ 'CBDb250aW51aXR5IFNlcnZlciByb2RhbmRvIG5hIHBvcnRhICR7UE9SVH1gKTsKICAgIGNvbnNvbGUubG9nKCdbSU5GT10gSW50ZXJmYWNlIHdlYiBkaXNwb27DrXZlbCBlbSBodHRwOi8vbG9jYWxob3N0OicgKyBQT1JUKTsKICAgIGNvbnNvbGUubG9nKCdbSU5GT10gRG9jdW1lbnRhw6fDo286IGh0dHBzOi8vZ2l0aHViLmNvbS9MdWNhc2RvcmVhYy9tY3AtY29udGludWl0eS1zZXJ2ZXItZml4ZW'
-+ 'QnKTsKICAgIAogICAgLy8gSW5pY2lhIG8gc2Vydmlkb3IgTUNQCiAgICBtY3BTZXJ2ZXIuc3RhcnQoKS5jYXRjaChlcnIgPT4gewogICAgICBjb25zb2xlLmVycm9yKCJbRVJST10gRmFsaGEgYW8gaW5pY2lhciBzZXJ2aWRvciBNQ1A6IiwgZXJyKTsKICAgIH0pOwogIH0pOwoKICAvLyBUcmF0YW1lbnRvIGRlIGVuY2VycmFtZW50bwogIHByb2Nlc3Mub24oJ1NJR0lOVCcsIGFzeW5jICgpID0+IHsKICA'
-+ 'gIGNvbnNvbGUubG9nKCdbSU5GT10gRW5jZXJyYW5kbyBzZXJ2aWRvci4uLicpOwogICAgYXdhaXQgbWNwU2VydmVyLnN0b3AoKTsKICAgIHByb2Nlc3MuZXhpdCgwKTsKICB9KTsKfQ==
+#!/usr/bin/env node
+
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import fs from 'fs-extra';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { MCPServer } from './mcp/server.js';
+import { WebController } from './web/controller.js';
+import { StateManager } from './services/stateManager.js';
+import { basicAuthMiddleware } from './web/auth.js';
+
+// Configuração do ambiente
+dotenv.config();
+
+// Detectar se estamos rodando via MCP (sem argumentos) ou como servidor web
+const isMCPMode = process.argv.length <= 2;
+
+if (isMCPMode) {
+  // Modo MCP - usar StdioServerTransport
+  console.error("Iniciando em modo MCP..."); // Use console.error para logs 
+  
+  // Inicializa o servidor MCP
+  const mcpServer = new MCPServer();
+  
+  // Inicia o servidor MCP
+  mcpServer.start().catch(err => {
+    console.error("[ERRO] Falha ao iniciar servidor MCP:", err);
+    process.exit(1);
+  });
+  
+  // Tratamento de encerramento
+  process.on('SIGINT', async () => {
+    console.error('Encerrando servidor MCP...');
+    await mcpServer.stop();
+    process.exit(0);
+  });
+} else {
+  // Modo servidor web - inicializar Express e MCP
+  // Configuração do diretório atual (para ES modules)
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
+  const app = express();
+  const PORT = process.env.PORT || 3000;
+
+  // Middleware
+  app.use(express.json());
+  app.use(cors());
+  
+  // Middleware de autenticação
+  app.use(basicAuthMiddleware({
+    enabled: process.env.AUTH_ENABLED === 'true',
+    realm: process.env.AUTH_REALM || 'MCP Continuity Server',
+    username: process.env.AUTH_USERNAME || 'admin',
+    password: process.env.AUTH_PASSWORD || 'password'
+  }));
+  
+  // Servir arquivos estáticos
+  app.use(express.static(path.join(__dirname, 'web/assets')));
+
+  // Inicializa os serviços
+  const stateManager = new StateManager();
+  
+  // Inicializa o servidor MCP
+  const mcpServer = new MCPServer();
+  
+  // Inicializa o controlador web
+  const webController = new WebController({ stateManager });
+  
+  // Registra as rotas da interface web
+  app.use('/', webController.getRouter());
+
+  // Página inicial com documentação (backup caso a rota do WebController falhe)
+  app.get('*', (req, res) => {
+    res.redirect('/');
+  });
+
+  // Inicia o servidor Express
+  app.listen(PORT, () => {
+    console.log(`[INFO] MCP Continuity Server rodando na porta ${PORT}`);
+    
+    // Verifica se a autenticação está habilitada
+    if (process.env.AUTH_ENABLED === 'true') {
+      console.log('[INFO] Autenticação básica habilitada');
+    } else {
+      console.log('[AVISO] Autenticação básica desabilitada - considere habilitar em produção');
+    }
+    
+    console.log('[INFO] Interface web disponível em http://localhost:' + PORT);
+    console.log('[INFO] Documentação: https://github.com/Lucasdoreac/mcp-continuity-server-fixed');
+    
+    // Inicia o servidor MCP
+    mcpServer.start().catch(err => {
+      console.error("[ERRO] Falha ao iniciar servidor MCP:", err);
+    });
+  });
+
+  // Tratamento de encerramento
+  process.on('SIGINT', async () => {
+    console.log('[INFO] Encerrando servidor...');
+    await mcpServer.stop();
+    process.exit(0);
+  });
+}
