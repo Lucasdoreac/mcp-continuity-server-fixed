@@ -20,7 +20,7 @@ export class RepositoryTools {
       
       // Lista arquivos e diretórios
       const files = await fs.readdir(dirToAnalyze);
-      console.log(`📁 Estrutura do repositório${workingDirectory ? ` (${workingDirectory})` : ''}:`);
+      console.log(`[DIRETÓRIO] Estrutura do repositório${workingDirectory ? ` (${workingDirectory})` : ''}:`);
       
       // Identifica diretórios
       const dirs = [];
