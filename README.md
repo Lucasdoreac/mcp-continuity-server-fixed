@@ -1,3 +1,5 @@
+> **Arquivado em 2026-10-22.** Substituído por [`Lucasdoreac/personal-dev-harness`](https://github.com/Lucasdoreac/personal-dev-harness) (skill `tiered-delegation`) e [`Lucasdoreac/sober`](https://github.com/Lucasdoreac/sober). A versão original, `mcp-continuity-server`, já estava arquivada. Mantido somente para referência histórica.
+
 # MCP Continuity Server (Versão Simplificada)
 
 Um servidor MCP para gerenciamento de continuidade e estado em projetos, baseado no MCP Continuity Tool. Esta versão foi simplificada para ser compatível com o SDK MCP versão 1.7.0.
